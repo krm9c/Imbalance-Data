@@ -87,7 +87,6 @@ class event:
             action = action.data.numpy().astype(int)[0]
             next_state, reward, done, _ = self.env.step(action)
             if self.render:
-                # self.env.render(mode=self.render)
                 self.env.render(mode="rgb_array")
 
             # To mark boundary between episodes
