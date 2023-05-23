@@ -19,7 +19,9 @@ matplotlib==3.5.0
 
 tqdm==4.59.0
 
-metadata==4.13.0
+importlib-metadata==4.13.0
+
+pyglet==1.5.21
 
 # ---------------- Usage ----------------
 Please run
