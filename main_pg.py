@@ -1,18 +1,11 @@
 import gym
 import torch
-import random
 import numpy as np
 
 from rl_class.pg.model import PolicyNet
 from rl_class.pg.flags import getFlags
 from rl_class.pg.event import event
-# from gym.envs.registration import registry, register, make, spec
-# register(
-#     id='myenv-v0',
-#     entry_point='gym.envs.algorithmic:myenv',
-#     tags={'wrapper_config.TimeLimit.max_episode_steps': 500},
-#     reward_threshold=25.0,
-# )
+
 
 def main(flags):
 
