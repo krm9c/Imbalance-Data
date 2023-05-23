@@ -1,6 +1,3 @@
-# Policy Gradient 
-
-
 # ---------------- Requirement ----------------
 
 python==3.7.10
