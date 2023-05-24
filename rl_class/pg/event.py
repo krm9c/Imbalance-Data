@@ -64,7 +64,7 @@ class event:
                 self.env.render(mode="rgb_array")
 
             # Sample the trajectory
-            self.REINFORCE(state)
+            self.sample_trajectory(state)
             pbar.set_postfix({
                 'Reward': '{0:1.1f}'.format(sum(self.reward_pool))})
 
@@ -76,7 +76,7 @@ class event:
                 df = pd.DataFrame(self.episode_durations)
                 df.to_csv(os.path.join(self.model_dir, 'durations.csv'))
 
-    def REINFORCE(self, state):
+    def sample_trajectory(self, state):
 
         for t in count():
 
