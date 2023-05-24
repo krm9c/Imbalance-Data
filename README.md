@@ -24,7 +24,7 @@ pyglet==1.5.21
 ## Policy Gradient 
 Please run
 ```
-python3 main_pg.py --scratch True --task "CartPole-v1" --max_steps 100 --optimizer "Adam" --num_episodes 10000 --learn_rate 1e-3 --save_after 1000
+python3 main_pg.py --scratch True --task "CartPole-v1" --max_steps 100 --optimizer "Adam" --num_episodes 10000 --learn_rate 1e-3 --save_after 10000
 ```
 
 ## Results
