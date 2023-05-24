@@ -4,16 +4,12 @@ import datetime
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+from utils import get_time
 from itertools import count
 import torch.optim as optimize
 import matplotlib.pyplot as plt
 from torch.autograd import Variable
 from torch.distributions import Bernoulli
-
-
-def get_time():
-    return datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-
 
 class event:
     def __init__(self, env, policy_net, args):
@@ -141,25 +137,25 @@ class event:
         self.optimizer.step()
         self.reset_pool()
 
-    def plot_durations(self):
-        plt.ion()
-        plt.figure(1)
-        plt.clf()
-        durations_t = torch.tensor(self.episode_durations, dtype=torch.float)
-        plt.title('Training...')
-        plt.xlabel('Episode')
-        plt.ylabel('Duration')
-        plt.plot(durations_t.numpy())
-        # Take 100 episode averages and plot them too
-        if len(durations_t) >= 100:
-            means = durations_t.unfold(0, 100, 1).mean(1).view(-1)
-            means = torch.cat((torch.zeros(99), means))
-            plt.plot(means.numpy())
-
-        plt.pause(0.001)  # pause a bit so that plots are updated
-        # if self.is_ipython:
-        #     display.clear_output(wait=True)
-        #     display.display(plt.gcf())
+    # def plot_durations(self):
+    #     plt.ion()
+    #     plt.figure(1)
+    #     plt.clf()
+    #     durations_t = torch.tensor(self.episode_durations, dtype=torch.float)
+    #     plt.title('Training...')
+    #     plt.xlabel('Episode')
+    #     plt.ylabel('Duration')
+    #     plt.plot(durations_t.numpy())
+    #     # Take 100 episode averages and plot them too
+    #     if len(durations_t) >= 100:
+    #         means = durations_t.unfold(0, 100, 1).mean(1).view(-1)
+    #         means = torch.cat((torch.zeros(99), means))
+    #         plt.plot(means.numpy())
+    #
+    #     plt.pause(0.001)  # pause a bit so that plots are updated
+    #     # if self.is_ipython:
+    #     #     display.clear_output(wait=True)
+    #     #     display.display(plt.gcf())
 
     def plot_end(self):
         plt.figure(figsize=(8, 6), dpi=150)
