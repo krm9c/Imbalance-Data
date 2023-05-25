@@ -30,13 +30,24 @@ $$
 P(\tau|\theta) = \rho_0 \prod_{t=0}^{T} P(s_{t+1}|s_t, a_t) \pi_{\theta}(a_t |s_t),$$
 where $\rho_0 $  is the start-state distribution.
 
-\subsection{The Log-Derivative Trick} \textcolor{red}{Not finished yet}
+\subsection{The Log-Derivative Trick}
 
+The log-derivative trick is based on a simple rule from calculus: the derivative of $\log x$ with respect to $x$ is $1/x$. When rearranged and combined with chain rule, we get:
 
-\subsection{The Log-Probability of a Trajectory}
+$\nabla_{\theta} P(\tau | \theta) = P(\tau | \theta) \nabla_{\theta} \log P(\tau | \theta).$
 
+\subsection{The Log-Probability of a Trajectory}\label{log_prob}
 
-\subsection{Gradients of Environment Functions}
+The log-derivative trick is a fundamental principle in the derivative rule stating that the derivative of $\log x$ with respect to $x$ is $1/x$. Upon rearranging this rule and applying the chain rule, we obtain the following relation:
+$$
+\log P(\tau|\theta) = \log \rho_0 (s_0) + \sum_{t=0}^{T} \bigg( \log P(s_{t+1}|s_t, a_t)  + \log \pi_{\theta}(a_t |s_t)\bigg).$$
+In this formula, $\nabla_{\theta} P(\tau | \theta)$ denotes the gradient of the probability of the trajectory $\tau$ given the policy parameter $\theta$, while $\nabla_{\theta} \log P(\tau | \theta)$ represents the gradient of the log probability of the same trajectory. This trick simplifies the gradient calculation process, which is integral to the policy gradient algorithm.
+
+\subsection{Gradients of Environment Functions}\label{sec_gradient_env}
+
+The environment's characteristics are independent of the policy parameter $\theta$. As a result, the gradients of the initial state distribution $\rho_0(s_0)$, the transition probability $P(s_{t+1}|s_t, a_t)$, and the return $R(\tau)$ with respect to $\theta$ are all zero. This essentially means that any changes to the policy parameter $\theta$ do not directly influence these quantities.
+
+\textcolor{red}{Not finished yet}
 
 
 \subsection{Grad-Log-Prob of a Trajectory}
