@@ -21,13 +21,14 @@ importlib-metadata==4.13.0
 pyglet==1.5.21
 
 # ---------------- Usage ----------------
-## Policy Gradient 
+## Vanilla Policy Gradient 
 Please run
 ```
 python3 main_pg.py --scratch True --task "CartPole-v1" --max_steps 100 --num_episodes 10000 --learn_rate 1e-3 --save_after 10000
 ```
 
 ## Results
+Notes: x-axis is the number of episodes, y-axis is the number of steps during each spisode. For CartPole task, you get reward +1 if for this step the pole remains upright, and get zero reward if the opposite is the case.
 
 ![fig_pg_reward](https://github.com/krm9c/RL_thompson/assets/38525155/cf437c8a-6bfe-4ee3-9fbb-48634343b068)
 
