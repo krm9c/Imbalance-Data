@@ -5,8 +5,7 @@
 \subsection{The Log-Derivative Trick}
 
 The log-derivative trick is based on a simple rule from calculus: the derivative of $\log x$ with respect to $x$ is $1/x$. When rearranged and combined with chain rule, we get:
-
-$\nabla_{\theta} P(\tau | \theta) = P(\tau | \theta) \nabla_{\theta} \log P(\tau | \theta).$
+$$\nabla_{\theta} P(\tau | \theta) = P(\tau | \theta) \nabla_{\theta} \log P(\tau | \theta).$$
 
 \subsection{The Log-Probability of a Trajectory}\label{log_prob}
 
@@ -14,3 +13,29 @@ The log-derivative trick is a fundamental principle in the derivative rule stati
 $$
 \log P(\tau|\theta) = \log \rho_0 (s_0) + \sum_{t=0}^{T} \bigg( \log P(s_{t+1}|s_t, a_t)  + \log \pi_{\theta}(a_t |s_t)\bigg).$$
 In this formula, $\nabla_{\theta} P(\tau | \theta)$ denotes the gradient of the probability of the trajectory $\tau$ given the policy parameter $\theta$, while $\nabla_{\theta} \log P(\tau | \theta)$ represents the gradient of the log probability of the same trajectory. This trick simplifies the gradient calculation process, which is integral to the policy gradient algorithm.
+
+\subsection{Gradients of Environment Functions}\label{sec_gradient_env}
+
+The environment's characteristics are independent of the policy parameter $\theta$. As a result, the gradients of the initial state distribution $\rho_0(s_0)$, the transition probability $P(s_{t+1}|s_t, a_t)$, and the return $R(\tau)$ with respect to $\theta$ are all zero. This essentially means that any changes to the policy parameter $\theta$ do not directly influence these quantities.
+
+\subsection{Grad-Log-Prob of a Trajectory}
+According to \ref{sec_gradient_env}, the gradient of the log-prob of a trajectory is thus
+
+\begin{equation*}
+  \begin{split}
+  \nabla_{\theta} \log P(\tau | \theta) &= {\nabla_{\theta} \log \rho_0 (s_0)} + \sum_{t=0}^{T} \bigg( {\nabla_{\theta} \log P(s_{t+1}|s_t, a_t)}  + \nabla_{\theta} \log \pi_{\theta}(a_t |s_t)\bigg) \\
+  &\stackrel{(i)}{=} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t),
+  \end{split}
+\end{equation*}
+where we can derive $(i)$ according to the rules summarized in \ref{log_prob}. Putting it all together, The derived policy gradient is as follows:
+$$
+ \nabla_{\theta} J(\pi_{\theta}) = \mathbb E_{\tau \sim \pi_{\theta}}\left[{\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) R(\tau)}\right] $$
+
+This expression is an expectation, suggesting that it can be approximated using the sample mean concept. To put this into practice, suppose we collect a set of trajectories, represented as $\mathcal{D} = {\tau_i}{i=1,...,N}$. Each of these trajectories is produced by the agent interacting with the environment following the policy $\pi{\theta}$. In this case, we can estimate the policy gradient with the sampled trajectories as follows:
+
+$$\hat{g} = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) R(\tau),$$
+where $|\mathcal{D}|$ represents the number of trajectories in $\mathcal{D}$, which is $N$ in this case.
+
+This expression provides us with the simplest computable form we were seeking. Under the assumption that our policy representation allows us to compute $\nabla_{\theta} \log \pi_{\theta}(a|s)$, and that we can interact with the environment to gather the required trajectory dataset, we're equipped to calculate the policy gradient and subsequently take a step to update the policy parameters.
+
+To provide a more tangible understanding of the policy gradient algorithm, we have developed a concise PyTorch implementation. This implementation, which is designed to solve the CartPole task, is publicly available on our GitHub repository. We encourage those interested to explore the code to gain a hands-on understanding of how the policy gradient algorithm is applied in practice.
