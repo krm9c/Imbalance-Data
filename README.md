@@ -6,7 +6,7 @@ tensorflow == 2.12.0
 
 # ---------------- Usage ----------------
 
-# # DeepHyper - Hyperparameter search for heart disease classification
+## DeepHyper - Hyperparameter search for heart disease classification
 
 please run:
 
@@ -14,7 +14,7 @@ please run:
 python3 main_task01.py
 ```
 
-# # DeepHyper - Hyperparameter search for gym
+## DeepHyper - Hyperparameter search for gym
 
 Will release soon!
 
