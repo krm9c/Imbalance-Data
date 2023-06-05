@@ -22,7 +22,8 @@ Will release soon!
 
 # ---------------- Results ----------------
 
-[results.csv](https://github.com/krm9c/RL_thompson/files/11651412/results.csv)
+[results.csv](https://github.com/krm9c/RL_thompson/files/11651428/results.csv)
+
 
 <!-- # ---------------- Requirement ----------------
 
