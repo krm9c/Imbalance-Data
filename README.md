@@ -14,9 +14,15 @@ please run:
 python3 main_task01.py
 ```
 
+
+
 ## DeepHyper - Hyperparameter search for gym
 
 Will release soon!
+
+# ---------------- Results ----------------
+
+[results.csv](https://github.com/krm9c/RL_thompson/files/11651412/results.csv)
 
 <!-- # ---------------- Requirement ----------------
 
