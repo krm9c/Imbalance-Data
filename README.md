@@ -1,5 +1,25 @@
 # ---------------- Requirement ----------------
 
+deephyper == 0.5.0
+
+tensorflow == 2.12.0
+
+# ---------------- Usage ----------------
+
+# # DeepHyper - Hyperparameter search for heart disease classification
+
+please run:
+
+```
+python3 main_task01.py
+```
+
+# # DeepHyper - Hyperparameter search for gym
+
+Will release soon!
+
+<!-- # ---------------- Requirement ----------------
+
 python==3.7.10
 
 pytorch==1.7.1
@@ -31,5 +51,5 @@ python3 main_pg.py --scratch True --task "CartPole-v1" --max_steps 100 --num_epi
 Notes: x-axis is the number of episodes, and y-axis is the number of steps during each spisode. For CartPole task, you get reward +1 if for this step the pole remains upright, and get zero reward if the opposite is the case.
 
 ![fig_pg_reward](https://github.com/krm9c/RL_thompson/assets/38525155/cf437c8a-6bfe-4ee3-9fbb-48634343b068)
-
+ -->
 
