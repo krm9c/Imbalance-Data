@@ -1,0 +1,12 @@
+\section{June 05\\ 
+{\large Hyper-parameter tunning tasks Under DeepHyper}}
+
+Hyper-parameters to tune:
+
+\begin{enumerate}
+  \item We first determine what parameters we should tune.
+  \item We first try to use grid search (if possible) to explore the hyperparameter spaces.
+  \item How to determine the important parameters to tune? 1. They influence our metrics the most; 2. For different tasks, the suitable hyperparameters may be varied; 3. e.g., units per layer, number of layers, clipping threshold (for PPO), learn rate, initialization strategies 
+  \item What kind of parameters is less important? 1. Although changing them may affect the results, all tasks may keep consistency; 2. discount factor gamma (but recommended to tune, see 3.6 P7); 3. e.g. activation functions in the neural network: tanh or ELU perform well, but ReLU the worst; 4. e.g. optimizer: Adam beta1=0.9.
+  \item What parameters that there is no need to tune? 1. not even influence the result by changing them a lot; 2. e.g. Regularization (3.8 P8)
+\end{enumerate}
