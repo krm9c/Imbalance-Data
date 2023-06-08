@@ -1,0 +1,22 @@
+
+\begin{sidewaystable}[h!]{\small\caption{Summary of hyper parameters that require fine-tuning.}
+\begin{tabular}{cccccc}
+\toprule
+{\bf Hyper parameter}  & {\bf Description}  & {\bf Feature Type} & {\bf Range}  & {\bf Default}  & {\bf Reference} \\ \midrule
+Actor width        & Number of units per layer in the Policy Network           & Integer      & $\left[8, 128\right]$    & 32            & P24 Fig. 18 \\ 
+Actor depth        & Number of layers in the Policy Network & Integer      & $\left[1, 4\right]$      & 2             & P25 Fig. 22 \\ 
+Actor learn rate   & Learning rate in the Policy optimizer  & Float        & $\left[10^{-3}, 10^{-5}\right]$  & $3\times 10^{-4}$ & P41 Fig. 69 \\ \midrule
+Critic width       & Number of units per layer in the Value Network            & Integer      & $\left[64, 512\right]$   & 128           & P25 Fig. 21 \\ 
+Critic depth       & Number of layers in the Value Network  & Integer      & $\left[1, 4\right]$      & 2             & P25 Fig. 20 \\ 
+Critic learn rate  & Learning rate in the Value optimizer   & Float        & $\left[10^{-2}, 10^{-4}\right]$  & $10^{-3}$     & P41 Fig. 69 \\ \midrule
+Clipping threshold & Control how much is allowed to change for each update     & Float        & $\left[0.1, 0.5\right]$  & 0.3           & Fig. 10, 32 \\ 
+Discount factor    & How much do future rewards contribute to the total return & Float        & $\left[0.8, 0.99\right]$ & 0.99          & P38 Fig. 60 \\ \midrule
+Initialization     & Initialization strategies for the neural networks         & Categorical  & \begin{tabular}[c]{@{}c@{}}"Glorot normal"\\ "Glorot uniform"\\ "He normal"\\ "He uniform"\\ "LeCun normal"\\ "LeCun uniform"\\ "Orthogonal"\end{tabular} & "Glorot normal"     &  P26 Fig. 27           \\  \midrule  \midrule 
+Activation         & Activation function of each layer of neural network                 & Categorical  & \begin{tabular}[c]{@{}c@{}}"ELU"\\ "Tanh"\\ "ReLU"\\ "Swish"\\ "Sigmoid"\\ "Leaky ReLU"\end{tabular}               & "tanh"                                            & P27 Fig. 30 \\ \midrule
+Optimizer          & Optimization strategy of neural networks in parameter updating      & Categorical  & \begin{tabular}[c]{@{}c@{}}"SGD"\\ "Adam"\\ "RMSProp"\\ "Adagrad"\end{tabular}                                     & "Adam"                                            & P41 Fig. 66 \\ \midrule
+Optimizer momentum & Accelerate the optimizer towards the minima and reduce oscillations & Float        & $\left[0,0.9\right]$      & 0.9    & P41 Fig. 67 \\ \midrule
+Rollout            & Number of workers to generate multiple trajectories simultaneously  & Integer      & $\left[1, 100,000\right]$ & 1 & None  \\ \midrule \midrule
+Regularizer        & A term added to the loss function to prevent overfitting            & Categorical  &
+\\ \bottomrule 
+\end{tabular}}
+\end{sidewaystable}
